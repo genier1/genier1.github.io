@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://genier1.github.io/sitemap.xml
