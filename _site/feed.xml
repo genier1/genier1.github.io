@@ -1,1 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://genier1.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://genier1.github.io/" rel="alternate" type="text/html" /><updated>2021-01-24T16:39:23+09:00</updated><id>https://genier1.github.io/feed.xml</id><title type="html">Studying Data</title><subtitle>An amazing website.</subtitle><author><name>Changjoon Lee</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://genier1.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://genier1.github.io/" rel="alternate" type="text/html" /><updated>2021-01-31T19:01:31+09:00</updated><id>https://genier1.github.io/feed.xml</id><title type="html">Studying Data</title><subtitle>Data Analyst, Python, SQL, Growth</subtitle><author><name>Changjoon Lee</name><email>lcj1683@gmail.com</email></author><entry><title type="html">Ab 테스트를 알아보자</title><link href="https://genier1.github.io/AB-%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90/" rel="alternate" type="text/html" title="Ab 테스트를 알아보자" /><published>2021-01-31T00:00:00+09:00</published><updated>2021-01-31T00:00:00+09:00</updated><id>https://genier1.github.io/AB%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://genier1.github.io/AB-%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90/">&lt;h2 id=&quot;ab-테스트란&quot;&gt;A/B 테스트란?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;임의로 나눈 두 집단(처리군과 대조군)에게 특정 제품/컨텐츠를 보여주고 어떤 집단이 더 높은 성과를 보이는 지 측정하여 해당 제품/컨텐츠가 효과적인지를 측정하는 방식&lt;/li&gt;
+  &lt;li&gt;다른 영향을 줄 수 있는 변수를 최대한 배제하여 상관관계가 인과관계로 나타나는지를 확인하는 방법론으로도 사용한다.&lt;/li&gt;
+  &lt;li&gt;서비스에서 UX 이슈를 해결하거나 유저의 인게이지먼트(구매, 리텐션, 클릭률)을 높이기 위한 방법론으로 많이 사용한다.
+    &lt;ul&gt;
+      &lt;li&gt;실리콘벨리의 주요 기업(구글, 페이스북, 넷플릭스 등)에서는 제품의 변경사항을 적용하기 이전에 항상 A/B테스트를 통해 효과를 검증한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;실험-설계&quot;&gt;실험 설계&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;반드시 두 집단을 임의적으로 나누어야 한다.
+    &lt;ul&gt;
+      &lt;li&gt;일반적으로 Randomised Controlled Trial(이하 RCT)를 통해 유저들을 임의로 나누어 배치한다.&lt;/li&gt;
+      &lt;li&gt;표본편향을 막고, 통제 변인을 조절하기 위한 장치&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;그러나 RCT를 진행한다고 해서 무조건 표본 편향이 없어진다고 볼 수는 없음
+    &lt;ul&gt;
+      &lt;li&gt;가능하다면 결과에 영향을 줄 수 있는 변수들이 양쪽 그룹에서 동등하게 나타나도록 통제해야 한다.&lt;/li&gt;
+      &lt;li&gt;넷플릭스에서는 &lt;a href=&quot;https://en.wikipedia.org/wiki/Stratified_sampling&quot;&gt;stratified sampling&lt;/a&gt;을 활용하여 모든 실험 군에서 기기 유형, 국가 등을 균일하게 가져가고자 노력함.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://hyperconnect.github.io/2020/08/26/azar-ab-test.html&quot;&gt;하이퍼커넥트&lt;/a&gt;에서도 처리군과 대조군의 유저 풀에서 편향이 발생하지 않도록 다양한 노력을 하고 있음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;실험이 성공하기 위해서는 가설을 정교하게 짜는 것이 매우 중요함
+    &lt;ul&gt;
+      &lt;li&gt;핀터레스트에서는 &lt;a href=&quot;https://medium.com/pinterest-engineering/how-pinterest-supercharged-its-growth-team-with-experiment-idea-review-fd6571a02fb8&quot;&gt;Experiment Idea Review (EIR)&lt;/a&gt;을 통해 Growth 팀이 기회를 포착하고 가설을 정교화할 수 있도록 하는 프로세스를 적용함&lt;/li&gt;
+      &lt;li&gt;백로그에 쌓인 실험 리스트를 ICE Framework를 통해 우선순위를 정하는 방식이 많이 활용 됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;검증하려고 하는 지표의 민감도를 파악하기 위해 A/A테스트를 진행하기도 한다.
+    &lt;ul&gt;
+      &lt;li&gt;A/B테스트를 통해 클릭률이 2% 상승했는데 A/A테스트를 진행해보니 똑같이 2%가 차이난다면 새로운 화면이 클릭률 상승에 기여한다고 단정지을 수 없다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;비즈니스에서는 필요한 표본크기를 미리 예측하는 것이 중요하다.
+    &lt;ul&gt;
+      &lt;li&gt;검정력, 탐지하고자 하는 효과 크기(MDE), 현재 전환율, 표본 크기 중 3가지를 알면 나머지 하나를 예측할 수 있다.&lt;/li&gt;
+      &lt;li&gt;샘플 사이즈 계산기를 참고하는 것도 유용한 방법이다.
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://www.optimizely.com/sample-size-calculator/&quot;&gt;A/B Test Sample Size Calculator - Optimizely&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;단, 필요한 표본 수를 확보했다고 해서 실험기간이 너무 짧은 경우 정확성이 떨어질 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;평일과 주말, 연휴 기간은 유저들의 행동 패턴이 다를 수 있기 때문에 주말에 실험한 결과가 평일에는 적용되지 않을 가능성이 높아진다.&lt;/li&gt;
+      &lt;li&gt;구매 주기가 긴 상품(가구, 자동차 등)의 경우 효과가 나타날 때까지 시간이 필요하다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;결과-분석&quot;&gt;결과 분석&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A/B테스트 결과를 적용해도 되는지에 대해서 통계적 유의성(Statistical significance)을 확보해야한다.
+    &lt;ul&gt;
+      &lt;li&gt;일반적으로 T검정을 통해 통계적 유의성을 확인하는 것이 보편적임&lt;/li&gt;
+      &lt;li&gt;베이지안 방식으로 통계적 유의성을 확보하기도 한다.
+        &lt;ul&gt;
+          &lt;li&gt;Google Optimize는 &lt;a href=&quot;https://support.google.com/optimize/answer/7405543?hl=ko&quot;&gt;베이지안을 사용&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;통계적 유의성을 측정하는 툴을 사용할 수도 있다.
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://neilpatel.com/ab-testing-calculator/&quot;&gt;A/B Testing Significance Calculator - Neil patel&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;그 외에 T검정, F검정, ANOVA, 카이제곱 분석 등 결과를 검정하는 여러가지 방법론을 사용하기도 함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;P-value(유의확률)
+    &lt;ul&gt;
+      &lt;li&gt;귀무가설이 맞을 수 있는 결과보다 더 &lt;strong&gt;극단적인 값이 관측될 확률&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;일반적으로 P값이 0.95 또는 0.99 이상이면 통계적 유의성이 확보되었다고 한다.&lt;/li&gt;
+      &lt;li&gt;그러나 P-value를 다룰 때는 매우 주의해야 한다.
+        &lt;ul&gt;
+          &lt;li&gt;P-value가 실험의 통계적 유의성을 무조건적으로 보장하지 못한다.&lt;/li&gt;
+          &lt;li&gt;테스트 중간에 P-value가 0.95를 넘겼다고 해서 실험을 중단시켜버리면 문제가 발생할 수 있다.(Peeking Problem)
+            &lt;ul&gt;
+              &lt;li&gt;우연히 P-value가 급격히 낮아질 수도 있기 때문에 이를 믿고 실험을 종료하면 실제로 없는 효과를 있다고 판단하는 오류를 저지를 수 있다.(1종 오류)&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;단점&quot;&gt;단점&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;테스트를 자주 하다보면 매출 등에서 손해를 볼 수 있다.
+    &lt;ol&gt;
+      &lt;li&gt;MAB(Multi-Armed Bandit) 알고리즘을 사용하여 이 부분을 개선
+        &lt;ol&gt;
+          &lt;li&gt;엡실론그리디, UCB, 톰슨 샘플링 등 다양한 알고리즘을 사용&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Contextual Bandit 알고리즘도 사용되고 있음&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;지역 최적화에 머무를 수 있다.&lt;/li&gt;
+  &lt;li&gt;시간의 변화에 따라 결과가 뒤집힐 수 있다.
+    &lt;ol&gt;
+      &lt;li&gt;유저의 특성이 변화하거나, 계절 등이 변화하면서 과거에는 좋았던 방식이 뒤바뀔 수 있다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;온라인-환경에서-사용되는-ab-테스팅-툴&quot;&gt;온라인 환경에서 사용되는 A/B 테스팅 툴&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Google Optimize(무료)&lt;/li&gt;
+  &lt;li&gt;Optimizely&lt;/li&gt;
+  &lt;li&gt;VWO&lt;/li&gt;
+  &lt;li&gt;A/B Tasty&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고문서&quot;&gt;참고문서&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.slideshare.net/cojette/ab-150118831&quot;&gt;실무에서 활용하는 A/B테스트&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://boxnwhis.kr/2015/01/29/a_b_testing.html&quot;&gt;A/B 테스팅이란&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/64704130&quot;&gt;데이터 과학을 위한 통계&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://sanghyukchun.github.io/96/&quot;&gt;Multi-armed Bandit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dynamicyield.com/lesson/introduction-to-ab-testing/&quot;&gt;A/B Testing &amp;amp; Optimization Course&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hyperconnect.github.io/2020/08/26/azar-ab-test.html&quot;&gt;Azar의 공정한 A/B test 운영 시스템 ABzar 소개&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://brunch.co.kr/@bumgeunsong/17&quot;&gt;인터넷 시대의 과학적 방법론, A/B 테스트&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.optimizely.com/2015/01/20/statistics-for-the-internet-age-the-story-behind-optimizelys-new-stats-engine/&quot;&gt;Optimizely - Stats Engine&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;만약 제 글에 오류가 있거나 추가해야 할 부분이 있다면 lcj1683@gmail.com으로 이메일 부탁드립니다 :)&lt;/p&gt;</content><author><name>Changjoon Lee</name><email>lcj1683@gmail.com</email></author><summary type="html">A/B 테스트란?</summary></entry></feed>

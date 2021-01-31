@@ -1,0 +1,139 @@
+I"�<h2 id="ab-테스트란">A/B 테스트란?</h2>
+
+<ul>
+  <li>임의로 나눈 두 집단(처리군과 대조군)에게 특정 제품/컨텐츠를 보여주고 어떤 집단이 더 높은 성과를 보이는 지 측정하여 해당 제품/컨텐츠가 효과적인지를 측정하는 방식</li>
+  <li>다른 영향을 줄 수 있는 변수를 최대한 배제하여 상관관계가 인과관계로 나타나는지를 확인하는 방법론으로도 사용한다.</li>
+  <li>서비스에서 UX 이슈를 해결하거나 유저의 인게이지먼트(구매, 리텐션, 클릭률)을 높이기 위한 방법론으로 많이 사용한다.
+    <ul>
+      <li>실리콘벨리의 주요 기업(구글, 페이스북, 넷플릭스 등)에서는 제품의 변경사항을 적용하기 이전에 항상 A/B테스트를 통해 효과를 검증한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="실험-설계">실험 설계</h2>
+
+<ul>
+  <li>반드시 두 집단을 임의적으로 나누어야 한다.
+    <ul>
+      <li>일반적으로 Randomised Controlled Trial(이하 RCT)를 통해 유저들을 임의로 나누어 배치한다.</li>
+      <li>표본편향을 막고, 통제 변인을 조절하기 위한 장치</li>
+    </ul>
+  </li>
+  <li>그러나 RCT를 진행한다고 해서 무조건 표본 편향이 없어진다고 볼 수는 없음
+    <ul>
+      <li>가능하다면 결과에 영향을 줄 수 있는 변수들이 양쪽 그룹에서 동등하게 나타나도록 통제해야 한다.</li>
+      <li>넷플릭스에서는 <a href="https://en.wikipedia.org/wiki/Stratified_sampling">stratified sampling</a>을 활용하여 모든 실험 군에서 기기 유형, 국가 등을 균일하게 가져가고자 노력함.</li>
+      <li><a href="https://hyperconnect.github.io/2020/08/26/azar-ab-test.html">하이퍼커넥트</a>에서도 처리군과 대조군의 유저 풀에서 편향이 발생하지 않도록 다양한 노력을 하고 있음</li>
+    </ul>
+  </li>
+  <li>실험이 성공하기 위해서는 가설을 정교하게 짜는 것이 매우 중요함
+    <ul>
+      <li>핀터레스트에서는 <a href="https://medium.com/pinterest-engineering/how-pinterest-supercharged-its-growth-team-with-experiment-idea-review-fd6571a02fb8">Experiment Idea Review (EIR)</a>을 통해 Growth 팀이 기회를 포착하고 가설을 정교화할 수 있도록 하는 프로세스를 적용함</li>
+      <li>백로그에 쌓인 실험 리스트를 ICE Framework를 통해 우선순위를 정하는 방식이 많이 활용 됨</li>
+    </ul>
+  </li>
+  <li>검증하려고 하는 지표의 민감도를 파악하기 위해 A/A테스트를 진행하기도 한다.
+    <ul>
+      <li>A/B테스트를 통해 클릭률이 2% 상승했는데 A/A테스트를 진행해보니 똑같이 2%가 차이난다면 새로운 화면이 클릭률 상승에 기여한다고 단정지을 수 없다.</li>
+    </ul>
+  </li>
+  <li>비즈니스에서는 필요한 표본크기를 미리 예측하는 것이 중요하다.
+    <ul>
+      <li>검정력, 탐지하고자 하는 효과 크기(MDE), 현재 전환율, 표본 크기 중 3가지를 알면 나머지 하나를 예측할 수 있다.</li>
+      <li>샘플 사이즈 계산기를 참고하는 것도 유용한 방법이다.
+        <ul>
+          <li><a href="https://www.optimizely.com/sample-size-calculator/">A/B Test Sample Size Calculator - Optimizely</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>단, 필요한 표본 수를 확보했다고 해서 실험기간이 너무 짧은 경우 정확성이 떨어질 수 있다.
+    <ul>
+      <li>평일과 주말, 연휴 기간은 유저들의 행동 패턴이 다를 수 있기 때문에 주말에 실험한 결과가 평일에는 적용되지 않을 가능성이 높아진다.</li>
+      <li>구매 주기가 긴 상품(가구, 자동차 등)의 경우 효과가 나타날 때까지 시간이 필요하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="결과-분석">결과 분석</h2>
+
+<ul>
+  <li>A/B테스트 결과를 적용해도 되는지에 대해서 통계적 유의성(Statistical significance)을 확보해야한다.
+    <ul>
+      <li>일반적으로 T검정을 통해 통계적 유의성을 확인하는 것이 보편적임</li>
+      <li>베이지안 방식으로 통계적 유의성을 확보하기도 한다.
+        <ul>
+          <li>Google Optimize는 <a href="https://support.google.com/optimize/answer/7405543?hl=ko">베이지안을 사용</a></li>
+        </ul>
+      </li>
+      <li>통계적 유의성을 측정하는 툴을 사용할 수도 있다.
+        <ul>
+          <li><a href="https://neilpatel.com/ab-testing-calculator/">A/B Testing Significance Calculator - Neil patel</a></li>
+        </ul>
+      </li>
+      <li>그 외에 T검정, F검정, ANOVA, 카이제곱 분석 등 결과를 검정하는 여러가지 방법론을 사용하기도 함</li>
+    </ul>
+  </li>
+  <li>P-value(유의확률)
+    <ul>
+      <li>귀무가설이 맞을 수 있는 결과보다 더 <strong>극단적인 값이 관측될 확률</strong></li>
+      <li>일반적으로 P값이 0.95 또는 0.99 이상이면 통계적 유의성이 확보되었다고 한다.</li>
+      <li>그러나 P-value를 다룰 때는 매우 주의해야 한다.
+        <ul>
+          <li>P-value가 실험의 통계적 유의성을 무조건적으로 보장하지 못한다.</li>
+          <li>테스트 중간에 P-value가 0.95를 넘겼다고 해서 실험을 중단시켜버리면 문제가 발생할 수 있다.(Peeking Problem)
+            <ul>
+              <li>우연히 P-value가 급격히 낮아질 수도 있기 때문에 이를 믿고 실험을 종료하면 실제로 없는 효과를 있다고 판단하는 오류를 저지를 수 있다.(1종 오류)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="단점">단점</h2>
+
+<ol>
+  <li>테스트를 자주 하다보면 매출 등에서 손해를 볼 수 있다.
+    <ol>
+      <li>MAB(Multi-Armed Bandit) 알고리즘을 사용하여 이 부분을 개선
+        <ol>
+          <li>엡실론그리디, UCB, 톰슨 샘플링 등 다양한 알고리즘을 사용</li>
+        </ol>
+      </li>
+      <li>Contextual Bandit 알고리즘도 사용되고 있음</li>
+    </ol>
+  </li>
+  <li>지역 최적화에 머무를 수 있다.</li>
+  <li>시간의 변화에 따라 결과가 뒤집힐 수 있다.
+    <ol>
+      <li>유저의 특성이 변화하거나, 계절 등이 변화하면서 과거에는 좋았던 방식이 뒤바뀔 수 있다.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="온라인-환경에서-사용되는-ab-테스팅-툴">온라인 환경에서 사용되는 A/B 테스팅 툴</h2>
+
+<ul>
+  <li>Google Optimize(무료)</li>
+  <li>Optimizely</li>
+  <li>VWO</li>
+  <li>A/B Tasty</li>
+</ul>
+
+<h3 id="참고문서">참고문서</h3>
+
+<ul>
+  <li><a href="https://www.slideshare.net/cojette/ab-150118831">실무에서 활용하는 A/B테스트</a></li>
+  <li><a href="https://boxnwhis.kr/2015/01/29/a_b_testing.html">A/B 테스팅이란</a></li>
+  <li><a href="http://www.yes24.com/Product/Goods/64704130">데이터 과학을 위한 통계</a></li>
+  <li><a href="http://sanghyukchun.github.io/96/">Multi-armed Bandit</a></li>
+  <li><a href="https://www.dynamicyield.com/lesson/introduction-to-ab-testing/">A/B Testing &amp; Optimization Course</a></li>
+  <li><a href="https://hyperconnect.github.io/2020/08/26/azar-ab-test.html">Azar의 공정한 A/B test 운영 시스템 ABzar 소개</a></li>
+  <li><a href="https://brunch.co.kr/@bumgeunsong/17">인터넷 시대의 과학적 방법론, A/B 테스트</a></li>
+  <li><a href="https://blog.optimizely.com/2015/01/20/statistics-for-the-internet-age-the-story-behind-optimizelys-new-stats-engine/">Optimizely - Stats Engine</a></li>
+</ul>
+
+<p>만약 제 글에 오류가 있거나 추가해야 할 부분이 있다면 lcj1683@gmail.com으로 이메일 부탁드립니다 :)</p>
+:ET
