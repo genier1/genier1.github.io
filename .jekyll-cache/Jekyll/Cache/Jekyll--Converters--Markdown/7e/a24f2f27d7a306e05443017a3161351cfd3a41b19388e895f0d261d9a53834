@@ -1,0 +1,118 @@
+I"%<h1 id="자료구조---stack">자료구조 - Stack</h1>
+
+<h2 id="스택이란">스택이란</h2>
+
+<ul>
+  <li>나중에 넣은 데이터를 가장 먼저 꺼내는 구조
+    <ul>
+      <li>LIFO(Last-In-First-Out)이라고도 함</li>
+      <li>가장 먼저 넣은 데이터가 먼저 나오는(FIFO) 스택과는 반대</li>
+    </ul>
+  </li>
+  <li>스택의 장단점
+    <ul>
+      <li>장점 - 구현이 쉽다, 데이터 저장과 읽기 속도가 빠르다.</li>
+      <li>단점 - 데이터의 최대 개수를 미리 정해야 한다.</li>
+    </ul>
+  </li>
+  <li>파이썬에서는 스택 자료구조를 모듈로 따로 지원하지 않는다.</li>
+</ul>
+
+<h2 id="스택-구현하기">스택 구현하기</h2>
+
+<ul>
+  <li>
+    <p>2가지 주요 연산을 지원한다.</p>
+
+    <ul>
+      <li>push - 데이터를 스택에 추가한다.</li>
+      <li>pop - 가장 최근에 넣은 데이터를 스택에서 제거한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>그 외 연산</p>
+
+    <ul>
+      <li>
+        <p>is_empty() - 리스트가 비어있는지를 파악한다.</p>
+      </li>
+      <li>
+        <p>peek() - 스택의 변형 없이 맨 위의 값을 호출한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>list를 이용한 구현</strong></p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">stack</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">stack</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    
+  <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  
+  <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> 
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span> 
+  
+  <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">True</span> 
+    <span class="k">return</span> <span class="bp">False</span> 
+  
+  <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Linked List를 이용한 구현</strong></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
+    
+<span class="k">class</span> <span class="nc">Stack</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">None</span> 
+    
+  <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">new_node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span>
+      
+  <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">is_empty</span><span class="p">():</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> 
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="n">data</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+    <span class="k">return</span> <span class="n">data</span>
+    
+  <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="k">return</span> <span class="bp">True</span>
+    
+  <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+    <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">is_empty</span><span class="p">():</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> 
+    
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="n">data</span>
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<ul>
+  <li><a href="https://www.fun-coding.org/Chapter06-stack.html">잔재미코딩 - 스택</a></li>
+  <li><a href="https://wayhome25.github.io/cs/2017/04/18/cs-20/">초보몽키의 개발공부로그</a></li>
+  <li><a href="https://daimhada.tistory.com/105">daim’s blog</a></li>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791189909178">파이썬 알고리즘 인터뷰</a></li>
+</ul>
+:ET

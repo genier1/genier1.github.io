@@ -4,4 +4,16 @@ var store = [{
         "tags": [],
         "url": "https://genier1.github.io/AB-%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90/",
         "teaser": null
+      },{
+        "title": "Python 자료구조 (1) queue",
+        "excerpt":"자료구조 - Queue Queue란 가장 먼저 넣은 데이터를 가장 먼저 꺼내는 구조 FIFO(First-In-First-Out - 선입선출)이라고도 함 나중에 넣은 데이터가 먼저 나오는(LIFO) 스택과는 반대 데크(Deque)나 우선순위 큐는 여러 분야에서 유용하게 사용. BFS, 캐시 등 Queue 구현 방법 리스트를 이용한 구현 list의 append, pop을 이용해 구현 class list_queue(queue): def __init__(self): self.queue =...","categories": [],
+        "tags": [],
+        "url": "https://genier1.github.io/Python-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-(1)-Queue/",
+        "teaser": null
+      },{
+        "title": "Python 자료구조 (2) stack",
+        "excerpt":"자료구조 - Stack 스택이란 나중에 넣은 데이터를 가장 먼저 꺼내는 구조 LIFO(Last-In-First-Out)이라고도 함 가장 먼저 넣은 데이터가 먼저 나오는(FIFO) 스택과는 반대 스택의 장단점 장점 - 구현이 쉽다, 데이터 저장과 읽기 속도가 빠르다. 단점 - 데이터의 최대 개수를 미리 정해야 한다. 파이썬에서는 스택 자료구조를 모듈로 따로 지원하지 않는다. 스택 구현하기 2가지...","categories": [],
+        "tags": [],
+        "url": "https://genier1.github.io/Python-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-(2)-Stack/",
+        "teaser": null
       }]

@@ -1,0 +1,121 @@
+I"�!<h1 id="자료구조---queue">자료구조 - Queue</h1>
+
+<h2 id="queue란">Queue란</h2>
+
+<ul>
+  <li>가장 먼저 넣은 데이터를 가장 먼저 꺼내는 구조
+    <ul>
+      <li>FIFO(First-In-First-Out - 선입선출)이라고도 함</li>
+      <li>나중에 넣은 데이터가 먼저 나오는(LIFO) 스택과는 반대</li>
+    </ul>
+  </li>
+  <li>데크(Deque)나 우선순위 큐는 여러 분야에서 유용하게 사용.
+    <ul>
+      <li>BFS, 캐시 등</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="queue-구현-방법">Queue 구현 방법</h2>
+
+<h3 id="리스트를-이용한-구현">리스트를 이용한 구현</h3>
+
+<ul>
+  <li>list의 append, pop을 이용해 구현</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">list_queue</span><span class="p">(</span><span class="n">queue</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">queue</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    
+	<span class="k">def</span> <span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">queue</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">pass</span>
+	
+  <span class="k">def</span> <span class="nf">dequeue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">queue</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">False</span> 
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">queue</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="deque를-이용한-구현">Deque를 이용한 구현</h3>
+
+<ul>
+  <li>Double-Ended Queue의 줄임말로, 양쪽 끝을 모두 추출할 수 있는, 큐를 일반화한 형태의 추상자료형(ADT)이다.</li>
+  <li>양 끝 엘리먼트의 append와 pop이 압도적으로 빠르다는 장점이 있다.
+    <ul>
+      <li>일반적인 리스트는 양 끝 엘리먼트 삽입/제거의 시간복잡도가 O(n)이지만, Deque는 시간복잡도가 O(1)에 불과하다</li>
+    </ul>
+  </li>
+  <li>collection 모듈에서 deque를 호출하여 사용할 수 있다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collection</span> <span class="kn">import</span> <span class="n">deque</span> 
+
+<span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">queue</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># queue = [1, 2, 3, 5]
+</span><span class="n">queue</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span> <span class="c1"># 1
+</span>
+<span class="n">queue2</span> <span class="o">=</span> <span class="n">deque</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">queue</span><span class="p">.</span><span class="n">appendleft</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># queue = [7, 4, 5, 6]
+</span><span class="n">queue</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># 6
+</span></code></pre></div></div>
+
+<h3 id="파이썬의-queue-모듈의-queue-클래스를-이용한-구현">파이썬의 queue 모듈의 Queue 클래스를 이용한 구현</h3>
+
+<ul>
+  <li>queue 라이브러리에서는 Queue(), LifoQueue(), PriorityQueue()를 제공합니다.
+    <ul>
+      <li>Queue - 일반적인 큐</li>
+      <li>LifoQueue() - 나중에 입력된 데이터가 먼저 출력(스택과 유사)</li>
+      <li>PriorityQueue() - 우선순위 큐</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span> 
+
+<span class="n">que</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+<span class="n">que</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">que</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">que</span><span class="p">)</span> <span class="c1"># [4, 5]
+</span><span class="n">que</span><span class="p">.</span><span class="n">qsize</span> <span class="c1"># 2
+</span><span class="n">que</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 4
+</span></code></pre></div></div>
+
+<h2 id="우선순위-큐">우선순위 큐</h2>
+
+<ul>
+  <li>특정 조건에 따라 우선순위가 가장 높은 요소가 추출되는 자료형이다.</li>
+  <li>힙과 관련이 깊다.
+    <ul>
+      <li>queue 모듈의 PriorityQueue는 내부적으로 heapq 모듈을 사용하도록 구현되어 있다.</li>
+      <li>다만, PriorityQueue는 heapq와 달리 Thread-Safe 클래스라는 차이점이 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">PriorityQueue</span>
+
+<span class="n">que</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
+<span class="n">que</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 우선순위 큐에 원소 추가
+</span><span class="n">que</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="c1"># 우선순위 큐의 원소 삭제 
+</span>
+<span class="n">que_two</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
+<span class="n">que_two</span><span class="p">.</span><span class="n">put</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="s">'Bus'</span><span class="p">))</span>
+<span class="n">que_two</span><span class="p">.</span><span class="n">put</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="s">'Subway'</span><span class="p">))</span>
+<span class="n">que_two</span><span class="p">.</span><span class="n">put</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="s">'Airplane'</span><span class="p">))</span>
+
+<span class="n">que_two</span><span class="p">.</span><span class="n">get</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Subway
+</span></code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<ul>
+  <li><a href="https://www.fun-coding.org/DS&amp;AL1-5.html">잔재미코딩 - 큐</a></li>
+  <li><a href="https://www.daleseo.com/python-queue/">파이썬에서 큐(queue) 자료 구조 사용하기</a></li>
+  <li><a href="https://daimhada.tistory.com/107">daim’s blog</a></li>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791189909178">파이썬 알고리즘 인터뷰</a></li>
+</ul>
+
+:ET
