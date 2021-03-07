@@ -16,4 +16,10 @@ var store = [{
         "tags": [],
         "url": "https://genier1.github.io/Python-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-(2)-Stack/",
         "teaser": null
+      },{
+        "title": "Python 자료구조 (3) linked list",
+        "excerpt":"자료구조 - Linked List Linked List란 배열과 함께 가장 기본이 되는 대표적인 선형 자료구조이며 다양한 추상 자료형(ADT) 구현의 기반이 된다. 떨어진 곳의 데이터를 화살표로 연결하여 관리하는 데이터 구조 탐색에는 O(N)이 소요된다. 파이썬에서는 리스트를 통해 링크드 리스트를 구현 Linked List의 장단점 장점 미리 데이터 공간을 할당하지 않아도 된다. 배열에 비해 데이터의...","categories": [],
+        "tags": [],
+        "url": "https://genier1.github.io/Python-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-(3)-Linked-List/",
+        "teaser": null
       }]
