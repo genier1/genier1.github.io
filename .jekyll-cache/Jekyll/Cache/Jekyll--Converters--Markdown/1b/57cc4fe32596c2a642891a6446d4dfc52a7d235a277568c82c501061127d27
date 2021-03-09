@@ -1,0 +1,13 @@
+I"6<h1 id="자료구조---hash-table">자료구조 - Hash Table</h1>
+
+<h2 id="hash-table이란">Hash Table이란</h2>
+
+<ul>
+  <li>배열과 함께 가장 기본이 되는 대표적인 선형 자료구조이며 다양한 추상 자료형(ADT) 구현의 기반이 된다.</li>
+  <li>떨어진 곳의 데이터를 화살표로 연결하여 관리하는 데이터 구조</li>
+  <li>탐색에는 O(N)이 소요된다.</li>
+  <li>파이썬에서는 리스트를 통해 링크드 리스트를 구현</li>
+</ul>
+
+<h2 id="linked-list의-장단점">Linked List의 장단점</h2>
+:ET

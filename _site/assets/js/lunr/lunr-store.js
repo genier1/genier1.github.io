@@ -22,4 +22,10 @@ var store = [{
         "tags": [],
         "url": "https://genier1.github.io/Python-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-(3)-Linked-List/",
         "teaser": null
+      },{
+        "title": "Python 자료구조 (4) hash table",
+        "excerpt":"자료구조 - Hash Table Hash Table이란 키와 밸류를 저장하는 데이터 구조 Key를 통해 바로 데이터를 받아올 수 있으므로, 속도가 획기적으로 빨라짐 대부분의 연산이 분할 상환 분석에 따른 시간 복잡도가 O(1)이다. 최악의 경우(충돌이 모두 발생하는 경우)에는 O(n)이다. 보통 배열로 미리 Hash Table 사이즈만큼 생성 후에 사용 (공간과 탐색 시간을 맞바꾸는 기법)...","categories": [],
+        "tags": [],
+        "url": "https://genier1.github.io/Python-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-(4)-Hash-Table/",
+        "teaser": null
       }]

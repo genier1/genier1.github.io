@@ -1,0 +1,21 @@
+I"�<h1 id="자료구조---hash-table">자료구조 - Hash Table</h1>
+
+<h2 id="hash-table이란">Hash Table이란</h2>
+
+<ul>
+  <li></li>
+</ul>
+
+<h2 id="hash-table의-장단점">Hash Table의 장단점</h2>
+
+<h2 id="hash-table-구현하기">Hash Table 구현하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">HashTable</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_size</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">table_size</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">table_size</span><span class="p">)]</span>
+    
+  
+</code></pre></div></div>
+
+:ET

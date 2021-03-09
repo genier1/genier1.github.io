@@ -1,0 +1,143 @@
+I"�+<h1 id="자료구조---hash-table">자료구조 - Hash Table</h1>
+
+<h2 id="hash-table이란">Hash Table이란</h2>
+
+<p><img src="https://user-images.githubusercontent.com/19471818/110459297-27ac5f80-8110-11eb-8c9d-1e899231a6e7.png" alt="1920px-Hash_table_3_1_1_0_1_0_0_SP svg" /></p>
+
+<ul>
+  <li>키와 밸류를 저장하는 데이터 구조</li>
+  <li>Key를 통해 바로 데이터를 받아올 수 있으므로, 속도가 획기적으로 빨라짐
+    <ul>
+      <li>대부분의 연산이 분할 상환 분석에 따른 시간 복잡도가 O(1)이다.</li>
+      <li>최악의 경우(충돌이 모두 발생하는 경우)에는 O(n)이다.</li>
+    </ul>
+  </li>
+  <li>보통 배열로 미리 Hash Table 사이즈만큼 생성 후에 사용 (공간과 탐색 시간을 맞바꾸는 기법)</li>
+  <li>파이썬에서는 딕셔너리 타입을 사용하면 된다.</li>
+  <li>주요 용도
+    <ul>
+      <li>검색이 많이 필요한 경우</li>
+      <li>저장, 삭제, 읽기가 빈번한 경우</li>
+      <li>캐쉬 구현시</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="용어-설명">용어 설명</h2>
+
+<ul>
+  <li>해시(Hash): 임의 값을 고정 길이로 변환하는 것</li>
+  <li>해시 테이블(Hash Table): 키 값의 연산에 의해 직접 접근이 가능한 데이터 구조</li>
+  <li>해싱 함수(Hashing Function): Key에 대해 산술 연산을 이용해 데이터 위치를 찾을 수 있는 함수</li>
+  <li>해시 값(Hash Value) 또는 해쉬 주소(Hash Address): Key를 해싱 함수로 연산해서, 해쉬 값을 알아내고, 이를 기반으로 해쉬 테이블에서 해당 Key에 대한 데이터 위치를 일관성있게 찾을 수 있음</li>
+  <li>슬롯(Slot): 한 개의 데이터를 저장할 수 있는 공간</li>
+</ul>
+
+<h2 id="충돌collision">충돌(Collision)</h2>
+
+<ol>
+  <li>다른 내용의 데이터가 같은 키를 갖는 경우 이를 해시 충돌이라고 한다.</li>
+  <li>충돌은 생각보다 쉽게 일어난다.
+    <ol>
+      <li>생일 문제 - 23명만 모여도 생일이 겹칠 확률이 50%를 넘는다.</li>
+    </ol>
+  </li>
+  <li>Open Hashing과 Close Hashing 기법이 있다.</li>
+</ol>
+
+<h3 id="chaining">Chaining</h3>
+
+<ul>
+  <li>
+    <p>Open Hashing 기법이라고 부르기도 한다.</p>
+  </li>
+  <li>
+    <p>충돌이 발생할 경우, 링크드 리스트로 연결하는 방식이다.</p>
+  </li>
+  <li>
+    <p>기본적인 자료구조와 간단한 알고리즘만 있으면 되므로 인기가 높다.</p>
+  </li>
+  <li>
+    <p>가장 전톡적인 방식이다.</p>
+  </li>
+</ul>
+
+<h3 id="open-addressing">Open Addressing</h3>
+
+<p><img src="https://user-images.githubusercontent.com/19471818/110459497-64785680-8110-11eb-8e87-13a89c84c38c.png" alt="724px-HASHTB12 svg" /></p>
+
+<ul>
+  <li>Linear Probing 또는 Close Hashing이라고 부르기도 한다.</li>
+  <li>충돌이 발생할 경우 해당 해쉬 값의 다음 index부터 빈 공간을 탐색한다.</li>
+  <li>전체 슬롯의 개수 이상 저장할 수 없으며, 이 경우 공간을 확장해주어야 한다.</li>
+  <li>해시테이블에 저장되는 데이터들이 고르게 분포되지 않고 뭉치는 현상이 발생하는 문제가 있다.(클러스터링)</li>
+  <li>파이썬의 경우 오픈 어드레싱 방식으로 해시 테이블을 구현하였다.
+    <ul>
+      <li>체이닝 시 malloc으로 메모리를 할당하는 오버헤드가 높기 때문</li>
+      <li>오픈 어드레싱의 한 방식인 선형 탐사 방식은 일반적으로 체이닝에 비해 성능이 좋다.
+        <ul>
+          <li>단, 슬롯의 80% 이상이 차게 되면 급격한 성능 저하가 발생함.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="hash-table-구현하기">Hash Table 구현하기</h2>
+
+<h3 id="chaining-기법">Chaining 기법</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">HashTable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_size</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">table_size</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">table_size</span><span class="p">)]</span>
+    
+    <span class="k">def</span> <span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">key</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">dataa</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">key</span>
+    
+    <span class="k">def</span> <span class="nf">hash_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="o">%</span> <span class="bp">self</span><span class="p">.</span><span class="n">size</span>
+    
+    <span class="k">def</span> <span class="nf">save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="n">hash_key</span> <span class="o">=</span> <span class="n">get_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">hash_address</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">hash_func</span><span class="p">(</span><span class="n">hash_key</span><span class="p">)</span>
+        
+        <span class="c1"># Hash Table에 이미 값이 있는 경우
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">hash_key</span><span class="p">:</span>
+                    <span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span>
+                    <span class="k">return</span>
+            <span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="n">index_key</span><span class="p">,</span> <span class="n">value</span><span class="p">])</span>
+            <span class="k">return</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[</span><span class="n">hash_key</span><span class="p">,</span> <span class="n">value</span><span class="p">]]</span>
+        		<span class="k">return</span>
+    <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="n">hash_key</span> <span class="o">=</span> <span class="n">get_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">hash_address</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">hash_func</span><span class="p">(</span><span class="n">hash_key</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">hash_key</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">hash_table</span><span class="p">[</span><span class="n">hash_address</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<h3 id="open-addressing-기법">Open Addressing 기법</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<ul>
+  <li><a href="https://www.fun-coding.org/Chapter09-hashtable.html">잔재미코딩 - 해쉬테이블</a></li>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791189909178">파이썬 알고리즘 인터뷰</a></li>
+  <li><a href="https://ko.wikipedia.org/wiki/%ED%95%B4%EC%8B%9C_%ED%85%8C%EC%9D%B4%EB%B8%94">Wikipedia - 해시 테이블</a></li>
+</ul>
+
+:ET
