@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 
 # Site Settings
 locale                   : "Ko"
-title                    : "Studying Data"
+title                    : "하루하루는 성실하게. 인생 전체는 되는대로"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Changjoon Lee"
-description              : "Data Analyst, Python, SQL, Growth"
+description              : "Python Backend Engineer, Data Analsis"
 url                      : "https://genier1.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Changjoon Lee"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data Analyst"
+  bio              : "Backend Engineer"
   location         : "Seoul"
   email            : "lcj1683@gmail.com"
   links:
@@ -113,7 +113,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/genier1"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
