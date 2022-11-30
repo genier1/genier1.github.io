@@ -1,5 +1,3 @@
-# Spring AOP, CGLIB, JDK Proxy
-
 ### What is AOP
 
 AOP란 Aspect-oriented Programming(관점지향 프로그래밍)의 약자이다. 스프링 공식문서에서는 AOP를 OOP(Object-oriented Programming)의 보완재이며 스프링의 핵심 구성 요소 중 하나로 보고 있다. 
